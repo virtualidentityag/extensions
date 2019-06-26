@@ -8,6 +8,7 @@
 <div class="widget-slug-editor">
   <input id="slug" type="text" class="form-control" style="width: 98%; font-size: 14px">
   <i id="loading" class="fa fa-spinner fa-spin"></i>
+  <i id="ok" class="fa fa-check-circle is-slug-unique"></i>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/3.0.2/es6-promise.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
@@ -72,6 +73,13 @@ cfExt.init(function (api) {
         el.style.display = 'none'
       }
     })
+  }
+
+  /**
+   * Show inline status icon based on current status
+   */
+   function updateStatus (slug) {
+        setStatus('ok')
   }
 })
 </script>
