@@ -1,0 +1,6 @@
+{
+  "id": "reusable-slug",
+  "name": "Reusable Slug Generator",
+  "srcdoc": "./index.html",
+  "fieldTypes": ["Symbol"]
+}
