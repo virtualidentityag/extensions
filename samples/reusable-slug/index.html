@@ -7,8 +7,6 @@
 </head>
 <div class="widget-slug-editor">
   <input id="slug" type="text" class="form-control" style="width: 98%; font-size: 14px">
-  <i id="loading" class="fa fa-spinner fa-spin"></i>
-  <i id="ok" class="fa fa-check-circle is-slug-unique"></i>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/3.0.2/es6-promise.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
@@ -27,10 +25,6 @@ cfExt.init(function (api) {
   var debouncedUpdateStatus = _.debounce(updateStatus, 500)
 
   var input = document.getElementById('slug')
-  var statusElements = {
-    loading: document.getElementById('loading'),
-    ok: document.getElementById('ok')
-  }
 
   api.window.updateHeight()
 
@@ -42,8 +36,6 @@ cfExt.init(function (api) {
   input.addEventListener('change', function () {
     handleSlugChange(input.value)
   })
-
-  updateStatus(slugField.getValue())
 
   /**
    * Handle change of slug value caused by either changing slug field
@@ -59,28 +51,8 @@ cfExt.init(function (api) {
   function setSlug (slug) {
     input.value = slug
     slugField.setValue(slug)
-    setStatus('loading')
     debouncedUpdateStatus(slug)
   }
-
-  /**
-   * Show icon for given status
-   */
-  function setStatus (status) {
-    _.each(statusElements, function (el, name) {
-      if (name === status) {
-        el.style.display = 'inline'
-      } else {
-        el.style.display = 'none'
-      }
-    })
-  }
-
-  /**
-   * Show inline status icon based on current status
-   */
-   function updateStatus (slug) {
-        setStatus('ok')
-  }
+  
 })
 </script>
